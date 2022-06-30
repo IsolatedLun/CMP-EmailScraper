@@ -30,11 +30,14 @@ def cmp_scraper_run(limit: int= 30):
 
             root_currency = req_get(CMP_URL + x)
             url = get_project_website_url(root_currency.text)
-            alread_visited = visited.get(url, False)
 
+            if url is None:
+                break
+
+            alread_visited = visited.get(url, False)
             visited.setdefault(url, False)
 
-            if url and not visited[url]:
+            if not visited[url]:
                 website_urls.append(url)
                 visited[url] = True
             elif visited[url]:

@@ -33,4 +33,4 @@ def update_emails(emails: list[str]):
             _emails.extend(json.load(json_file))
 
         with open(EMAILS_DIR, 'w+', encoding='utf-8') as json_file: 
-            json.dump(_emails, json_file)
+            json.dump(_emails, json_file, indent=2)

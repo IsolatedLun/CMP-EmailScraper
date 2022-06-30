@@ -8,6 +8,7 @@ EMAILS_DIR = './data/emails.json'
 
 # Cooldowns
 CMP_COOLDOWN = 2.25
+WEB_COOLDOWN = 0.25
 
 # Misc
 LIMIT = 12
