@@ -32,7 +32,8 @@ def cmp_scraper_run(limit: int= 30):
             url = get_project_website_url(root_currency.text)
 
             if url is None:
-                break
+                print('[ERR]: No url.')
+                continue
 
             alread_visited = visited.get(url, False)
             visited.setdefault(url, False)

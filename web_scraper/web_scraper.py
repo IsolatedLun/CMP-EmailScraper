@@ -9,13 +9,16 @@ def web_scraper_run(url: str):
     """
 
     print(f'[INFO]: Scraping from {url}.')
-    req = req_get(url)
+    try:
+        req = req_get(url)
 
-    if req.status_code < 400:
-        addresses = get_email_addreses(req.text)
-        
-        update_emails(addresses)
-        print(f'[SUCCESS]\n')
-        sleep(WEB_COOLDOWN) # This is redundant because the website will only be visited once.
-    else:
-        print(f'[ERR]: Failed accessing {url}.\n')
+        if req.status_code < 400:
+            addresses = get_email_addreses(req.text)
+            
+            update_emails(addresses)
+            print(f'[SUCCESS]\n')
+            sleep(WEB_COOLDOWN) # This is redundant because the website will only be visited once.
+        else:
+            print(f'[ERR]: Failed accessing {url}.\n')
+    except:
+        print(f'[FATAL]: Failed accessing {url}.\n')
