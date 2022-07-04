@@ -15,13 +15,14 @@ def get_email_addreses(html: str):
     def clean_email(x: str):
         if x.startswith('mailto'):
             return x[7::]
-        return x
+        if not any([x for x in ['>', ';', '/', '"', '=']]):
+            return x
     
     bs4 = BeautifulSoup(html, 'lxml')
     emails = []
 
     def get_by_regex():
-        try: return re.findall(r'[a-z0-9]+@\S+.com', html)
+        try: return re.findall(r'[a-z0-9]+@\S+.\S+', html)
         except: return []
 
     def get_by_selectors():
@@ -34,9 +35,6 @@ def get_email_addreses(html: str):
     
 def update_emails(emails: list[str]):
         _emails = []; _emails.extend(emails)
-
-        with open(EMAILS_DIR, 'r', encoding='utf-8') as json_file: 
-            _emails.extend(json.load(json_file))
 
         with open(EMAILS_DIR, 'w+', encoding='utf-8') as json_file: 
             json.dump(_emails, json_file, indent=2)

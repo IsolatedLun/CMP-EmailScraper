@@ -47,7 +47,7 @@ def cmp_scraper_run(limit: int= 30):
                 print(f'[ERR]: Failed.')
 
             if not alread_visited: # If url has not been visited previusly, enumerate {i}
-                i +=1
+                i += 1
         except:
             print('[FATAL]: Something went terribly wrong.')
 

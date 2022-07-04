@@ -14,11 +14,13 @@ def web_scraper_run(url: str):
 
         if req.status_code < 400:
             addresses = get_email_addreses(req.text)
-            
-            update_emails(addresses)
-            print(f'[SUCCESS]\n')
+            print(f'[SUCCESS]: { len(addresses) } emails.')
             sleep(WEB_COOLDOWN) # This is redundant because the website will only be visited once.
+
+            return addresses
         else:
             print(f'[ERR]: Failed accessing {url}.\n')
+            return []
     except:
         print(f'[FATAL]: Failed accessing {url}.\n')
+        return []

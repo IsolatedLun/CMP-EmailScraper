@@ -11,7 +11,7 @@ CMP_COOLDOWN = 2.25
 WEB_COOLDOWN = 0.25
 
 # Misc
-LIMIT = 12
+LIMIT = 6
 
 # Selectors
 TABLE_SELECTOR = 'table.cmc-table a.cmc-link'
